@@ -1,0 +1,64 @@
+{
+    "name": "Harshit Toky",
+    "email": "tokyharshit0@gmail.com",
+    "phone": "9817610471",
+    "linkedin": "https://www.linkedin.com/in/harshit-toky-4126b02a6/",
+    "github": "https://github.com/harshit-toky",
+    "education": [
+        {
+            "degree": "Unknown",
+            "details": "Bachelor \u2019s degree in Computer"
+        },
+        {
+            "degree": "Unknown",
+            "details": "12th , C.B.S.E \n Aggarsain"
+        },
+        {
+            "degree": "Unknown",
+            "details": "10th , C.B.S.E \n Aggarsain"
+        }
+    ],
+    "skills": [
+        "Java",
+        "Git",
+        "OpenCV",
+        "C",
+        "Python",
+        "C++"
+    ],
+    "experience": [
+        {
+            "role": "Unknown",
+            "details": "Internship \n \u2022 Game Development Internship ( July , 2024"
+        },
+        {
+            "role": "Internship",
+            "duration": "July , 2024"
+        }
+    ],
+    "projects": [
+        {
+            "title": "Face Recognition using openCV",
+            "duration": "Mar , 2024 - June , 2024",
+            "description": "Developed a real - time face recognition system using OpenCV , integrating Haar Cascades , HOG , deep learning , and LBPH for detection and classification . Optimized accuracy and performance with hyperparameter tuning and GPU acceleration ."
+        },
+        {
+            "title": "Investigation on Personal Assistant Nurse Robots",
+            "duration": "Feb , 2024",
+            "description": "This research explores Personal Assistant Nurse ( PAN ) robots in healthcare , focusing on their role in addressing rising demands . It examines their hardware , software , and challenges like trust , security , and errors . The study emphasizes ongoing RD and integration , positioning PAN robots as key collaborators in modern healthcare ."
+        },
+        {
+            "title": "Banking Software",
+            "duration": "Sep , 2023 - Jan , 2024",
+            "description": "Developed a robust banking application in Java utilizing Swing for a sleek user interface . Integrated with MySQL for efficient data management , ensuring secure and seamless financial transactions . TECHNICAL"
+        }
+    ],
+    "certifications": [
+        "\u2022 Successfully completed ( NDE)v1 administered by EC Council ",
+        " \u2022 Attained ( EHE)v1 certification administered by EC Council "
+    ],
+    "achievements": [
+        " \u2022 Finalist , Techgig Code Gladiators 2024 Hackathon . ",
+        " \u2022 Secured 313th rank in TCS CodeVita Season 12 , a global coding competition . "
+    ]
+}
