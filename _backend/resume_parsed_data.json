@@ -22,14 +22,16 @@
     ],
     "skills": [
         "Unity",
-        "Git",
-        "Python",
-        "C++",
         "Java",
+        "Git",
+        "C++",
         "MySQL",
+        "Python",
+        "openCV",
         "Agile",
         "OpenCV",
-        "C"
+        "C",
+        "Javascript"
     ],
     "experience": [
         {

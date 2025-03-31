@@ -4,6 +4,10 @@ const openTokenizedResume = () => {
     window.open("/tokenized-resume", "_blank");
 };
 
+const calculateSimilarityScore = () => {
+    window.open("/similarityScore", "_blank");
+};
+
 export default function Output({ data }) {
     if (!data || Object.keys(data).length === 0) {
         return <p className="text-red-500 text-center">No parsed data available.</p>;
@@ -105,13 +109,23 @@ export default function Output({ data }) {
             )}
 
             {/* View Tokenized Resume */}
-            <div className="mt-6 flex justify-center">
+            <div className="mt-6 flex justify-between">
+                <div>
                 <button
-                    className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition"
+                    className="bg-blue-500 w-[200px] text-white px-6 py-2 rounded-md hover:bg-blue-600 transition ml-4"
                     onClick={openTokenizedResume}
                 >
                     View Tokenized Resume
                 </button>
+                </div>
+                <div>
+                    <button
+                        className="bg-blue-500 w-[200px] text-white px-6 py-2 rounded-md hover:bg-blue-600 transition mr-4"
+                        onClick={calculateSimilarityScore}
+                    >
+                        Calculate Similarity Score
+                    </button>
+                </div>
             </div>
         </div>
     );

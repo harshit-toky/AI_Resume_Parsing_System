@@ -56,25 +56,26 @@ def extract_education(tokens):
 
 def extract_skills(tokens):
     predefined_skills = {
-        "Python", "Java", "C++", "C", "JavaScript", "TypeScript", "Go", "Rust", "Swift", "Kotlin",
-        "SQL", "NoSQL", "PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite", "OracleDB", "GraphQL", 
-        "PL/SQL", "Firebase", "Machine Learning", "Deep Learning", "Data Structures", "Algorithms", 
-        "Computer Vision", "OpenCV", "TensorFlow", "Keras", "PyTorch", "Scikit-learn", "Pandas", 
-        "NumPy", "Matplotlib", "Seaborn", "NLTK", "spaCy", "Hugging Face Transformers", "Flask", 
-        "Django", "FastAPI", "Spring Boot", "Express.js", "Node.js", "React", "Next.js", "Angular", 
-        "Vue.js", "Svelte", "Bootstrap", "Tailwind CSS", "Material-UI", "jQuery", "Three.js", 
-        "WebAssembly", "GraphQL", "REST API", "Microservices", "Docker", "Kubernetes", "Git", 
-        "GitHub", "GitLab", "CI/CD", "Jenkins", "Terraform", "Ansible", "AWS", "Azure", "Google Cloud", 
-        "Linux", "Shell Scripting", "Bash", "PowerShell", "Operating Systems", "Embedded Systems", 
-        "Cybersecurity", "Cryptography", "Blockchain", "Smart Contracts", "Solidity", "Ethereum", 
-        "Hyperledger", "Arduino", "Raspberry Pi", "Computer Networks", "Network Security", "DevOps", 
-        "Agile", "Scrum", "Data Science", "Big Data", "Hadoop", "Spark", "Kafka", "Airflow", 
-        "Natural Language Processing", "Reinforcement Learning", "Generative AI", "LLMs", "AutoML", 
-        "Data Engineering", "ETL", "Snowflake", "Data Warehousing", "ELK Stack", "Selenium", 
-        "Jest", "Mocha", "Cypress", "Unity", "Unreal Engine", "Blender"
+        "python", "java", "c++", "c", "javascript", "typescript", "go", "rust", "swift", "kotlin",
+        "sql", "nosql", "postgresql", "mysql", "mongodb", "redis", "sqlite", "oracledb", "graphql", 
+        "pl/sql", "firebase", "machine learning", "deep learning", "data structures", "algorithms", 
+        "computer vision", "opencv", "tensorflow", "keras", "pytorch", "scikit-learn", "pandas", 
+        "numpy", "matplotlib", "seaborn", "nltk", "spacy", "hugging face transformers", "flask", 
+        "django", "fastapi", "spring boot", "express.js", "node.js", "react", "next.js", "angular", 
+        "vue.js", "svelte", "bootstrap", "tailwind css", "material-ui", "jquery", "three.js", 
+        "webassembly", "graphql", "rest api", "microservices", "docker", "kubernetes", "git", 
+        "github", "gitlab", "ci/cd", "jenkins", "terraform", "ansible", "aws", "azure", "google cloud", 
+        "linux", "shell scripting", "bash", "powershell", "operating systems", "embedded systems", 
+        "cybersecurity", "cryptography", "blockchain", "smart contracts", "solidity", "ethereum", 
+        "hyperledger", "arduino", "raspberry pi", "computer networks", "network security", "devops", 
+        "agile", "scrum", "data science", "big data", "hadoop", "spark", "kafka", "airflow", 
+        "natural language processing", "reinforcement learning", "generative ai", "llms", "automl", 
+        "data engineering", "etl", "snowflake", "data warehousing", "elk stack", "selenium", 
+        "jest", "mocha", "cypress", "unity", "unreal engine", "blender"
     }
 
-    return [token for token in tokens if token in predefined_skills]
+    return [token for token in tokens if token.lower() in predefined_skills]
+
 
 def extract_experience(tokens):
     exp_keywords = ["Internship", "Experience", "Employment", "Job", "Work"]

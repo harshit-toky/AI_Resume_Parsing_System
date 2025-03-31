@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import fitz  # PyMuPDF for extracting text from PDFs
 from parsing import tokenize_resume
+from calculate_similarity_score import analyze_resume
 import json
 
 app = Flask(__name__)
@@ -48,6 +49,38 @@ def download_tokenized_resume():
         return send_file("../tokenized_resume.txt", as_attachment=True)
     except FileNotFoundError:
         return jsonify({"error": "Tokenized resume file not found"}), 404
+
+@app.route("/compare-resume", methods=["POST"])
+def compare_resume():
+    data = request.json
+
+    if not data or "jobDescription" not in data:
+        return jsonify({"error": "Job description is required"}), 400
+
+    try:
+        # Load parsed resume data
+        with open("resume_parsed_data.json", "r", encoding="utf-8") as file:
+            parsed_resume = json.load(file)
+
+        job_description = data["jobDescription"]
+
+        # Call analyze_resume function
+        # matched_skills, unmatched_skills, matched_education, job_education, similarity_score = analyze_resume(parsed_resume, job_description)
+        result = analyze_resume(parsed_resume, job_description)
+
+        return jsonify({
+            "matchedSkills": result["matchedSkills"],
+            "unmatchedSkills": result["unmatchedSkills"],
+            "similarityScore": float(result["similarityScore"])  # Ensure it's a float
+        })
+
+
+    except FileNotFoundError:
+        print("Error")
+        return jsonify({"error": "Parsed resume data not found"}), 404
+    except Exception as e:
+        print(e)
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
