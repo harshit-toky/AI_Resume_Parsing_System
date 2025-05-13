@@ -1,0 +1,5 @@
+pyresparser==1.0.6
+spacy==3.2.1
+nltk==3.6.5
+requests==2.26.0
+streamlit==1.12.0
