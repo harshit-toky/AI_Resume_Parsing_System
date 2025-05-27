@@ -5,6 +5,7 @@ from validation import create_json
 nlp = spacy.load("en_core_web_sm")
 TECH_WORDS = {"C++", "Java", "Python", "HTML", "CSS", "JavaScript", "MySQL", "Git", "Mar"}
 
+
 def extract_name(tokens):
     """Extracts the name from tokenized resume text."""
     text = " ".join(tokens)
@@ -76,51 +77,121 @@ def extract_skills(tokens):
 
     return [token for token in tokens if token.lower() in predefined_skills]
 
+# def extract_experience(tokens):
+#     exp_keywords = ["Internship", "Experience", "Employment", "Job", "Work"]
+#     experience = []
+#     for i, token in enumerate(tokens):
+#         if token in exp_keywords:
+#             exp_entry = " ".join(tokens[i:i+30])  # Capture surrounding words
+#             experience.append(exp_entry)
+#             i += 30
+#     return experience
 
-def extract_experience(tokens):
+
+def extract_experience_sections(tokens):
+    all_headers = ['PROFILE', 'ACADEMIC DETAILS', 'Internship', 'Experience', 'PROJECTS', 
+                   'TECHNICAL SKILLS', 'CERTIFICATIONS', 'ACHIEVEMENTS', 'POSITIONS OF RESPONSIBILITY']
     exp_keywords = ["Internship", "Experience", "Employment", "Job", "Work"]
-    experience = []
-    for i, token in enumerate(tokens):
-        if token in exp_keywords:
-            exp_entry = " ".join(tokens[i:i+10])  # Capture surrounding words
-            experience.append(exp_entry)
-    return experience
+
+    all_headers_lower = [h.lower() for h in all_headers]
+    exp_keywords_lower = [k.lower() for k in exp_keywords]
+
+    sections = []
+    i = 0
+    n = len(tokens)
+
+    while i < n:
+        token_lower = tokens[i].lower()
+
+        if token_lower in exp_keywords_lower:
+            current_header = token_lower
+            section_tokens = [tokens[i]]
+            i += 1
+
+            while i < n:
+                next_token_lower = tokens[i].lower()
+                if next_token_lower in all_headers_lower and next_token_lower != current_header:
+                    break
+                section_tokens.append(tokens[i])
+                i += 1
+
+            section_text = " ".join(section_tokens)
+            sections.append((current_header, section_text))
+        else:
+            i += 1
+
+    return sections
+
+
+def parse_experience(tokens):
+    sections = extract_experience_sections(tokens)
+    if not sections:
+        return []
+
+    # Ensure we're joining only strings
+    section_text = "\n".join([str(text) for _, text in sections])
+
+    # DEBUG: Check if section_text is actually a string
+    assert isinstance(section_text, str), "section_text is not a string"
+
+    entries = re.split(r'\n\s*•\s*', section_text)
+    parsed_experience = []
+
+    for entry in entries:
+        entry = entry.strip()
+        if not entry:
+            continue
+        
+        lines = entry.split('\n')
+        first_line = lines[0]
+        
+        title_match = re.match(r'^(.*?)\s*\(', first_line)
+        date_match = re.search(r'\((.*?)\)', first_line)
+        
+        title = title_match.group(1).strip() if title_match else "Unknown Title"
+        dates = date_match.group(1).strip() if date_match else "Unknown Dates"
+        
+        description_start = first_line.split(':', 1)[1] if ':' in first_line else ""
+        description = (description_start.strip() + " " + " ".join(lines[1:])).strip()
+
+        if title == "Unknown Title" and dates == "Unknown Dates" and description == "":
+            continue
+
+        parsed_experience.append({
+            "title": title,
+            "dates": dates,
+            "description": description
+        })
+
+    return parsed_experience
+
 
 def extract_projects(tokens):
     """Extract project details from tokenized resume text."""
     text = " ".join(tokens)
 
-    # Debug: Print full resume text
-    # print("\nFull Resume Text:\n", text[:1000])
-
-    # Regex pattern to find projects section
     pattern = r"(?:Projects|Personal Projects|Work Experience)\s*(.*?)(?=\n\n|Skills|Certifications|Education|$)"
     match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
 
     if match:
         project_section = match.group(1).strip()
 
-        # Debug: Print extracted projects section
-        # print("\nExtracted Projects Section:\n", project_section[:500])
-
-        # New Regex for extracting projects
-        projects = re.findall(r"•\s*([\w\s]+?)\s*\(([^)]+)\)\s*:\s*(.*?)\s*(?=•|$)", project_section, re.DOTALL)
+        # Modified regex with optional duration
+        projects = re.findall(r"•\s*([^\n:•()]+?)\s*(?:\(([^)]+)\))?\s*:\s*(.*?)\s*(?=•|$)", project_section, re.DOTALL)
 
         parsed_projects = []
         for project in projects:
-            title, duration, description = project
+            title = project[0].strip()
+            duration = project[1].strip() if project[1] else None
+            description = " ".join(project[2].split()).strip()
             parsed_projects.append({
-                "title": title.strip(),
-                "duration": duration.strip(),
-                "description": " ".join(description.split()).strip()
+                "title": title,
+                "duration": duration,
+                "description": description
             })
-
-        # Debug: Print extracted project details
-        # print("\nParsed Projects:\n", parsed_projects)
 
         return parsed_projects if parsed_projects else None
 
-    # print("\n❌ No Projects Found")
     return None
 
 
@@ -136,7 +207,7 @@ def extract_certifications(tokens):
     return None
 
 # Extract Information from Tokenized Data
-def parse_resume(tokens):
+def parse_resume(tokens, filePath):
     parsed_data = {
         "Name": extract_name(tokens),
         "Email": extract_email(tokens),
@@ -144,7 +215,7 @@ def parse_resume(tokens):
         "Links": extract_links(tokens),
         "Education": extract_education(tokens),
         "Skills": extract_skills(tokens),
-        "Experience": extract_experience(tokens),
+        "Experience": parse_experience(tokens),
         "Projects": extract_projects(tokens),
         "Certifications": extract_certifications(tokens)
     }
@@ -153,4 +224,6 @@ def parse_resume(tokens):
     for key, value in parsed_data.items():
         print(f"{key}: {value}\n")
 
-    create_json(parsed_data)
+    create_json(parsed_data, filePath)
+
+

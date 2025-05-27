@@ -1,5 +1,5 @@
 {
-    "name": null,
+    "name": "Harshit Toky",
     "email": "tokyharshit0@gmail.com",
     "phone": "9817610471",
     "links": [
@@ -13,29 +13,29 @@
         },
         {
             "degree": "Unknown",
-            "details": "12th , C.B.S.E Aggarsain Public"
+            "details": "12th , C.B.S.E \n Aggarsain"
         },
         {
             "degree": "Unknown",
-            "details": "10th , C.B.S.E Aggarsain Public"
+            "details": "10th , C.B.S.E \n Aggarsain"
         }
     ],
     "skills": [
+        "MySQL",
+        "Flask",
         "openCV",
         "Git",
-        "OpenCV",
-        "Agile",
-        "Javascript",
-        "Flask",
         "Python",
-        "Linux",
-        "React",
-        "Unity",
-        "MySQL",
-        "Java",
+        "C",
         "algorithms",
-        "C++",
-        "C"
+        "Agile",
+        "Java",
+        "OpenCV",
+        "Javascript",
+        "Linux",
+        "Unity",
+        "React",
+        "C++"
     ],
     "experience": [
         {
@@ -53,7 +53,7 @@
         {
             "title": "Banking Software",
             "duration": null,
-            "description": "Developed a robust banking application in Java utilizing Swing for a sleek user interface . Integrated with MySQL for efficient data management , ensuring secure and seamless financial transactions . TECHNICAL"
+            "description": "Developed a robust banking application in Java utilizing Swing for a sleek user in- terface . Integrated with MySQL for efficient data management , ensuring secure and seamless financial transactions . TECHNICAL"
         }
     ],
     "certifications": [

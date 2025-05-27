@@ -30,11 +30,11 @@ function ResumeInput({onInputChange}) {
         <div className="p-4 w-[100%] flex flex-col">
             {/* Resume Type Selection */}
             <div className="border-[3px] border-black p-4 rounded-md">
-                <label htmlFor="resume_input" className="font-medium">Select Resume Type</label>
+                <label htmlFor="resume_input" className="text-black font-medium">Select Resume Type</label>
                 <select 
                     style={{ margin: "10px" }} 
                     onChange={(e) => {change_input_type(e.target.value); setPdfFile(null); onInputChange("",null);}} 
-                    className="border-[1px] border-blue-200 p-1 rounded-md">
+                    className="border-[1px] border-blue-200 p-1 rounded-md text-black">
                     <option value="text">Text</option>
                     <option value="pdf">PDF</option>
                 </select>

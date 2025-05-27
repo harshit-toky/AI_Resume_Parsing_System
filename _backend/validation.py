@@ -28,6 +28,8 @@ def clean_skills(skill_list):
 def clean_certifications(cert_list):
     certifications = []
     achievements = []
+    if cert_list == None : 
+        return certifications, achievements
     for cert in cert_list:
         if "certification" in cert.lower() or "completed" in cert.lower():
             certifications.append(cert)
@@ -47,7 +49,7 @@ def clean_experience(exp_list):
     return structured_exp
 
 # Function to generate structured JSON
-def create_json(parsed_data):
+def create_json(parsed_data, filePath):
     certifications, achievements = clean_certifications(parsed_data["Certifications"])
     
     final_data = {
@@ -57,19 +59,34 @@ def create_json(parsed_data):
         "links": parsed_data["Links"] if parsed_data["Links"] else None,
         "education": clean_education(parsed_data["Education"]),
         "skills": clean_skills(parsed_data["Skills"]),
-        "experience": clean_experience(parsed_data["Experience"]),
+        "experience": parsed_data["Experience"],
         "projects": parsed_data["Projects"],
         "certifications": certifications,
         "achievements": achievements
     }
-    print(final_data)
-    save_to_json(final_data)
+    # print(final_data)
+    save_to_json(final_data, filePath)
 
+import os
 
-def save_to_json(data, filename="resume_parsed_data.json"):
-    with open(filename, "w", encoding="utf-8") as file:
-        json.dump(data, file, indent=4)
-    print(f"✅ Parsed data saved to {filename}")
+def save_to_json(data, filename=None):
+    # Default filename
+    if filename is None:
+        full_path = r"F:\React JS\ai_resume_parsing_system\_backend\resume_parsed_data.json"
+        with open(full_path, "w", encoding="utf-8") as file:
+            json.dump(data, file, indent=4)
+    else:
+        # Extract only the filename, ignoring any directory paths
+        with open(filename, "w", encoding="utf-8") as file:
+            json.dump(data, file, indent=4)
+
+    # Construct full path in the current working directory
+    
+
+    
+
+    print(f"✅ Parsed data saved")
+
 
 # Load from JSON file
 def load_from_json(filename="resume_parsed_data.json"):

@@ -1,0 +1,59 @@
+{
+    "name": "Harshit Toky",
+    "email": "tokyharshit0@gmail.com",
+    "phone": "9817610471",
+    "links": [
+        "https://www.linkedin.com/in/harshit-toky-4126b02a6/",
+        "https://github.com/harshit-toky"
+    ],
+    "education": [
+        {
+            "degree": "Unknown",
+            "details": "Bachelor \u2019s degree in Computer"
+        },
+        {
+            "degree": "Unknown",
+            "details": "12th , C.B.S.E \n Aggarsain"
+        },
+        {
+            "degree": "Unknown",
+            "details": "10th , C.B.S.E \n Aggarsain"
+        }
+    ],
+    "skills": [
+        "Git",
+        "Agile",
+        "React",
+        "Python",
+        "openCV",
+        "Flask",
+        "algorithms",
+        "Linux",
+        "Javascript",
+        "C",
+        "MySQL",
+        "C++",
+        "Java",
+        "OpenCV",
+        "Unity"
+    ],
+    "experience": [
+        {
+            "role": "Unknown",
+            "details": "Internship \n \u2022 Game Development Internship ( July , 2024"
+        },
+        {
+            "role": "Internship",
+            "duration": "July , 2024"
+        }
+    ],
+    "projects": null,
+    "certifications": [
+        "\u2022 Successfully completed ( NDE)v1 administered by EC Council ",
+        " \u2022 Attained ( EHE)v1 certification administered by EC Council "
+    ],
+    "achievements": [
+        " \u2022 Finalist , Techgig Code Gladiators 2024 Hackathon . ",
+        " \u2022 Secured 313th rank in TCS CodeVita Season 12 , a global coding competition . "
+    ]
+}

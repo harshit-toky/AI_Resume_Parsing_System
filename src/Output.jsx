@@ -64,7 +64,8 @@ export default function Output({ data }) {
                     <ul className="list-disc ml-6">
                         {data.experience.map((exp, index) => (
                             <li key={index}>
-                                <strong>{exp.role}:</strong> {exp.details || exp.duration}
+                                <p><strong>{exp.title} {exp.dates && `(${exp.dates})`}</strong></p>
+                                <p className="text-gray-700">{exp.description}</p>
                             </li>
                         ))}
                     </ul>
@@ -77,7 +78,7 @@ export default function Output({ data }) {
                     <h3 className="text-lg font-semibold border-b pb-2">Projects</h3>
                     {data.projects.map((project, index) => (
                         <div key={index} className="mb-2">
-                            <p><strong>{project.title} ({project.duration})</strong></p>
+                            <p><strong>{project.title} {project.duration && `(${project.duration})`}</strong></p>
                             <p className="text-gray-700">{project.description}</p>
                         </div>
                     ))}

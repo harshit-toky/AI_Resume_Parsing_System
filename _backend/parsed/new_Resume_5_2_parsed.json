@@ -1,5 +1,5 @@
 {
-    "name": null,
+    "name": "Harshit Toky",
     "email": "tokyharshit0@gmail.com",
     "phone": "9817610471",
     "links": [
@@ -13,29 +13,25 @@
         },
         {
             "degree": "Unknown",
-            "details": "12th , C.B.S.E Aggarsain Public"
+            "details": "12th , C.B.S.E \n Aggarsain"
         },
         {
             "degree": "Unknown",
-            "details": "10th , C.B.S.E Aggarsain Public"
+            "details": "10th , C.B.S.E \n Aggarsain"
         }
     ],
     "skills": [
+        "MySQL",
         "openCV",
         "Git",
-        "OpenCV",
-        "Agile",
-        "Javascript",
-        "Flask",
         "Python",
-        "Linux",
-        "React",
-        "Unity",
-        "MySQL",
+        "C",
+        "Agile",
         "Java",
-        "algorithms",
-        "C++",
-        "C"
+        "OpenCV",
+        "Javascript",
+        "Unity",
+        "C++"
     ],
     "experience": [
         {
@@ -47,12 +43,17 @@
     "projects": [
         {
             "title": "Face Recognition using openCV",
-            "duration": null,
+            "duration": "Mar , 2024 - June , 2024",
             "description": "Developed a real - time face recognition system using OpenCV , integrating Haar Cascades , HOG , deep learning , and LBPH for detection and classification . Optimized accuracy and performance with hyperparameter tuning and GPU acceleration ."
         },
         {
+            "title": "Investigation on Personal Assistant Nurse Robots",
+            "duration": "Feb , 2024",
+            "description": "This research explores Personal Assistant Nurse ( PAN ) robots in healthcare , focusing on their role in addressing rising demands . It examines their hardware , software , and challenges like trust , security , and errors . The study emphasizes ongoing RD and integration , positioning PAN robots as key collaborators in modern healthcare ."
+        },
+        {
             "title": "Banking Software",
-            "duration": null,
+            "duration": "Sep , 2023 - Jan , 2024",
             "description": "Developed a robust banking application in Java utilizing Swing for a sleek user interface . Integrated with MySQL for efficient data management , ensuring secure and seamless financial transactions . TECHNICAL"
         }
     ],
